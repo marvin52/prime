@@ -20,18 +20,6 @@ function generatePrimes(times) {
 
     // Itera sobre cada múltiplo de 12
     for (let multiple of multiplesOf12) {
-        // opa++
-        // //console.log(avoidThis, multiple)
-        // if(avoidThis.includes(multiple)){
-        //     // console.log(avoidThis.length)
-        //     console.log(multiple)
-        //     console.count('AVOID')
-        //     //console.log(opa, multiplesOf12[opa - 3])
-
-        //    continue;
-        // }
-
-        // encerrar por aqui o ciclo
 
         // Itera sobre cada número primo base
         for (let basePrime of basePrimes) {
