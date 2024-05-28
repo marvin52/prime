@@ -77,6 +77,8 @@ var b = fermatM(a);
 var c = fermatM(b);
 var d = fermatM(c);
 var e = fermatM(d);
+var ee = fermatM(e);
+var dd = fermatM(4201n);
 
 //var ff = fermatN(e);
 var f = fermatN(e);//MEIO
@@ -100,5 +102,10 @@ console.log(h, isPrime(h))
 console.log(i, isPrime(i))
 console.log(j, isPrime(j))
 console.log(k, isPrime(k))
+console.log('-----------------')
+console.log(dd)
 
 // console.log(fermatM('17'), fermatN('257'), fermatN('4097'))
+
+
+
