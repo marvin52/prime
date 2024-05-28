@@ -1,44 +1,7 @@
 const isPrime = require('is-prime-number');
 const args = process.argv.slice(2);
 
-//const command_ = parseFloat(args[0]);
 const q = args[0];
-
-function agoraVai(){
-
-    let num = 1;
-    let arrayPrimos = [1];
-
-    let pp = num + num;
-    arrayPrimos.push(pp);
-
-    let teste = (arr) => {
-        for(i in arr){
-            if(i > 0 && !arr.includes(arr[i] + arr[i - 1])){
-                if((arr[i] + arr[i - 1]) % (arr[1])){
-                    //console.log(arr[1], (arr[i] + arr[i - 1]) % (arr[1]) , arr[i] + arr[i - 1])
-                    arr.push(arr[i] + arr[i - 1])
-                } else if((arr[i] + arr[i - 2]) % (arr[1]) && !arr.includes(arr[i] + arr[i - 2])){
-                    //console.log(arr[1], (arr[i] + arr[i - 1]) % (arr[1]) , arr[i] + arr[i - 1])
-                    arr.push(arr[i] + arr[i - 2])
-                }
-            }
-        }
-        return arr;
-    }
-
-    arrayPrimos = teste(arrayPrimos)
-    arrayPrimos = teste(arrayPrimos)
-    arrayPrimos = teste(arrayPrimos)
-    arrayPrimos = teste(arrayPrimos)
-    
-
-
-    console.log(arrayPrimos)
-
-}
-
-//agoraVai()
 
 function geraPrimos12(quantidadeDeIteracoes){
     let numerosPrimosBase = [1, 2, 3, 5, 7, 11]
@@ -89,18 +52,5 @@ console.time('CONTA');
 let primos = geraPrimos12(parseFloat(q));
 
 console.timeEnd('CONTA');
-// let correct = 0;
-// let wrong = 0;
-// for(primo of primos){
-//     if(isPrime(primo)){
-//         correct++;
-//     } else {
-//         wrong++;
-//     }
-// }
- //console.log(JSON.stringify(primos))
-
-// console.log('--------------------------------------------------------')
-// console.log(wrong === 0? `100%`: `${wrong} errors`)
 
 console.log(`De ${primos[0] - 1} até ${primos[primos.length - 1] + 1} existem ${primos.length} números primos`)
