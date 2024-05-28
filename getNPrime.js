@@ -1,4 +1,3 @@
-const isPrime = require('is-prime-number');
 const args = process.argv.slice(2);
 
 const primeLimit = parseInt(args[0]);
@@ -44,39 +43,5 @@ let primes = generatePrimes(primeLimit);
 
 console.timeEnd('Execution Time');
 
-console.log(`Os primeiros ${primeLimit} números primos são:`);
-console.log(primes);
-
-let certo = [];
-let errado = [];
-console.log('Iniciando Checagem')
-
-for(let i = 0; i < primes.length; i++){
-    if(isPrime(primes[i])){
-        certo.push(primes[i])
-    } else {
-        errado.push(primes[i])
-    }
-}
-console.log('FIM DA CHECAGEM');
-console.log('PRECISÃO DE ', (certo.length * 100) / (certo.length + errado.length ) , '%' )
-console.log(JSON.stringify(errado))
-
-console.log('TESTE DE ABRANGENCIA')
-let naLista = [];
-let foraDalista = [];
-
-for(let i = 2; i <= primes[primes.length - 1]; i++){
-    let temp = isPrime(i);
-    if(temp){
-        if(primes.includes(i)){
-            naLista.push(i)
-        } else {
-            foraDalista.push(i)
-        }
-
-    }    
-}
-console.log('ABRANGÊNCIA DE ', (naLista.length * 100) / (naLista.length + foraDalista.length ) , '%' )
-
-console.log(JSON.stringify(foraDalista))
+console.log(JSON.stringify(primes));
+console.log(`Os primeiros ${primeLimit} números primos são esses:`);
