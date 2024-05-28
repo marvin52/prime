@@ -89,15 +89,22 @@ function geraPrimos12(quantidadeDeIteracoes){
                 case
                 //Checa se a soma do número primo multiplicado por 12 é divísivel por 2
                 somaNPrimoMultiplicadoPor12ComNumeroPrimo % 2 !== 0 &&
-                 //Checa se a soma do número primo multiplicado por 12 é divísivel por 7
+
+                //Checa se a soma do número primo multiplicado por 12 é divísivel por 7
                 somaNPrimoMultiplicadoPor12ComNumeroPrimo % 7 !== 0 &&
-                 //Checa se a soma do número primo multiplicado por 12 é divísivel por 11
+                
+                //Checa se a soma do número primo multiplicado por 12 é divísivel por 11
                 somaNPrimoMultiplicadoPor12ComNumeroPrimo % 11 !== 0 &&
+                
+                // Checa se o numero é divisível por algum primo encontrado anteriormente
                 primoEncontradoNaSomaEDivisivelPorAlgumPrimoJaEncontrado=== false &&
+                
                 //Checa se o ultímo dígito do numero é 5, checa se o número é divível por 5
                 resultadoDaSomaEmString.slice(-1) !== "5" &&
-                 //Checa se a soma de todos os dígitos é divisível por 3
+                
+                //Checa se a soma de todos os dígitos é divisível por 3
                 somaTodosOsDigitos % 3 !== 0:
+
                     //Se todas as checagens forem falsas, então o número encontrado é primo e é adicionado à lista de primos.
                     arrayDeNumerosPrimosEncontrados.push(somaNPrimoMultiplicadoPor12ComNumeroPrimo)
                 break;
