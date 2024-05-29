@@ -1,36 +1,41 @@
 const args = process.argv.slice(2);
 const n = parseInt(args[0]);
 
+function calcula(num){
 // Função para calcular o n-ésimo número primo usando a aproximação básica
-function approximateNthPrime(n) {
-    return Math.floor(n * Math.log(n));
+function approximateNthPrime(num) {
+    return Math.floor(num * Math.log(num));
 }
 
 // Função para calcular o n-ésimo número primo usando a aproximação refinada
-function refinedApproximateNthPrime(n) {
-    return n * (Math.log(n) + Math.log(Math.log(n)));
+function refinedApproximateNthPrime(num) {
+    return num * (Math.log(num) + Math.log(Math.log(num)));
 }
 
 // Função para encontrar o n-ésimo número primo usando aproximação
-function approximateAndFindNthPrime(n) {
-    const approx = approximateNthPrime(n);
-    const refinedApprox = refinedApproximateNthPrime(n);
+function approximateAndFindNthPrime(num) {
+    const approx = approximateNthPrime(num);
+    const refinedApprox = refinedApproximateNthPrime(num);
     return Math.floor((approx + refinedApprox) / 2);
 }
 
 const fatorVar = 2;
-const fator = n / fatorVar + n / (fatorVar ** 3);
+const fator = num / fatorVar + num / (num.toString().length - 1);
 
-const nthPrimeLow = approximateAndFindNthPrime(n - fator);
-const nthPrime = approximateAndFindNthPrime(n);
-const nthPrimeHigh = approximateAndFindNthPrime(n + fator);
+const nthPrimeLow = approximateAndFindNthPrime(num - fator);
+const nthPrime = approximateAndFindNthPrime(num);
+const nthPrimeHigh = approximateAndFindNthPrime(num + fator);
 
 const ko = (nthPrimeHigh - nthPrime) - (nthPrime - nthPrimeLow);
 
 // Calcula o número aproximado com o fator de ajuste
 const numeroAproximado = nthPrime + ko;
+    return numeroAproximado;
+}
 
-console.log(`O número aproximado é ${numeroAproximado}`);
+let calcA = calcula(n)
+console.log(`O número aproximado é ${calcA}`);
+179415469
 
 // Explicação:
 // 1. A função `approximateAndFindNthPrime` agora retorna uma média das aproximações básica e refinada para maior precisão.
