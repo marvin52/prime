@@ -25,10 +25,7 @@ function sieveOfEratosthenes(limit) {
 }
 
 function estimateUpperLimit(n) {
-    if (n < 6) {
-        return 15;
-    }
-    return Math.floor(n * (Math.log(n) + Math.log(Math.log(n))));
+    return n < 6 ? 15 : Math.floor(n * (Math.log(n) + Math.log(Math.log(n))));
 }
 
 function generateNthPrime(targetIndex) {
