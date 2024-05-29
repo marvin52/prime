@@ -33,9 +33,6 @@ if __name__ == "__main__":
   # Calculate constant outside the loop
   constant = math.log(math.log(target_prime_index))  # Pre-calculate constant
 
-  start_time = time.time()
   nth_prime = generate_nth_prime(target_prime_index, constant)
-  end_time = time.time()
 
-  print(f"Execution Time: {end_time - start_time} seconds")
-  print(f"O {target_prime_index}º número primo é: {nth_prime}")
+  print(f"{nth_prime}")

@@ -41,6 +41,6 @@ if __name__ == "__main__":
     end_time = time.time()
 
     print(f"Execution Time: {end_time - start_time} seconds")
-    print(f"O {target_prime_index}º número primo é: {nth_prime}")
+    print(f"{nth_prime}")
 
 
