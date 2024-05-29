@@ -1,3 +1,5 @@
+const fs = require('fs').promises;
+
 const args = process.argv.slice(2);
 
 function sieveOfEratosthenes(limit) {
@@ -162,41 +164,45 @@ function testeC(a, b) {
 }
 
 function callOthers(a, b, pc) {
-    console.time('CONTA')
     let t = testeC(a, b);
     let soma = 0;
     for (let i = 0; i < t.length - 1; i++) {
-        // let total = Prime(parseFloat(t[i]), parseFloat(t[i + 1]),
         let total = Prime(parseFloat(t[i]), parseFloat(t[i + 1]), pc);
-        // soma += total.totalPrime;
-        //let total = Prime(parseFloat(t[i]), parseFloat(t[i + 1]));
         soma += total.totalPrime;
     }
-    console.timeEnd('CONTA');
     return soma;
 }
 
-// Extrair argumentos
-const low = parseInt(args[0]);
-const high = parseInt(args[1]);
+async function calculaEescreveArquivo(a, low, primeCount, bestMatch) {
+    for (let i = low; i < a; ++i) {
+        const primeList_ = generatePrimeList(low * i);
+        const primeCount_ = callOthers(low, a, primeList_);
+        if (primeCount_ === primeCount) {
+            //console.count('ENTROU');
+            bestMatch[a - low] = i;
+            await escreverNoArquivo(`${i},`);
+            break;
+        }
+    }
+}
 
-// Gerar lista de números primos
-const primeList = generatePrimeList(high);
+function escreverNoArquivo(dados) {
+    return fs.writeFile('bestMatch.json', dados, { flag: 'a' });
+}
 
-// Chamar a função principal e calcular o total de números primos
-const primeCount = callOthers(low, high, primeList);
-console.log(`${primeCount} prime number(s) founded`);
+(async function main() {
+    const low = 1 || parseInt(args[0]);
+    const high = 100000 || parseInt(args[1]);
+    let bestMatch = [0];
 
+    for (let a = low; a < high; ++a) {
+        console.log(`calculado ${((a) * 100) / high} %`);
 
+        const primeList = generatePrimeList(a);
+        const primeCount = callOthers(low, a, primeList);
 
+        await calculaEescreveArquivo(a, low, primeCount, bestMatch);
+    }
 
-// ➜  primos git:(master) ✗ node primeB.js 1 10000            
-// CONTA: 225.152ms
-// 1229  prime number founded
-
-// ➜  primos git:(master) ✗ node primeB.js 1 10000  
-// CONTA: 586.632ms
-// 1229 prime number(s) founded
-
-
-
+    console.log('calculado 100 %');
+})();
