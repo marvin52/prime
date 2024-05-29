@@ -40,10 +40,8 @@ function generateNthPrime(targetIndex) {
     return primes[targetIndex - 1];
 }
 
-console.time('Execution Time');
+
 
 const nthPrime = generateNthPrime(targetPrimeIndex);
 
-console.timeEnd('Execution Time');
-
-console.log(`O ${targetPrimeIndex}º número primo é: ${nthPrime}`);
+console.log(`${nthPrime}`);
