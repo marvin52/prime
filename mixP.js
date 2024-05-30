@@ -42,9 +42,9 @@ function verificarNumero(X) {
     let resto = X % 12;
 
     // Verificar se o resto é um número primo menor ou igual a 11
-    if(X === 15485863){
-        console.log(">>>>>>>>>> ", resto, !ehPrimo(resto) || resto > 11)
-    }
+    // if(X === 15485863){
+    //     console.log(">>>>>>>>>> ", resto, !ehPrimo(resto) || resto > 11)
+    // }
     if (!ehPrimo(resto) || resto > 11) {
         return false;
     }
@@ -52,17 +52,6 @@ function verificarNumero(X) {
     // Se o resto for um número primo, verificar se X é divisível por 12
     return (X - resto) % 12 === 0;
 }
-
-// // Exemplos de uso
-// console.log(verificarNumero(541));  // Deve retornar true, pois 541 = 45 * 12 + 1, e 1 é primo
-// console.log(verificarNumero(542));  // Deve retornar false, pois 542 = 45 * 12 + 2, e 2 não é primo
-
-
-
-
-
-
-
 
 
 
@@ -146,86 +135,25 @@ function encontrarDescartaveis(min, max) {
 }
 
 let calcA = calcula(n)
+let calcAm = calcula(n - 1)
+let calcAM = calcula(n + 1)
 resultado(n)
     .then(_ => {
         let gabarito = parseInt(_)
         console.log(gabarito)
         console.log(calcA)
+        console.log(calcAM.menorA, calcAm.maiorA)
         
         let menorProximo = calcA.menorA > calcA.menorB ? calcA.menorA : calcA.menorB;
         let maiorProximo = calcA.maiorA < calcA.maiorB ? calcA.maiorA : calcA.maiorB;
         let diffProximos = maiorProximo - menorProximo
-        //let qtDeCandidatos = diffProximos - contarParesEMultiplosDe5(diffProximos)
+
+        
         let AGORAVAI = encontrarDescartaveis(menorProximo, maiorProximo)
 
         console.log(menorProximo, maiorProximo, ' = ', diffProximos, ', sobra um total de ', AGORAVAI.length)
         
         console.log(`\n\n`, AGORAVAI.indexOf(gabarito))
 
-        //console.log(`\n\n`, JSON.stringify(AGORAVAI))
 
     })
-
-
-//console.log(`O número aproximado é ${calcA}`);
-//179415469
-
-//                3.14
-//                3.15
-//                3 0.01
-//                  0,01 / 12  *  2
-//                3 + x = pi
-//                0,01 = 10⁻2
-//
-//                        10 ^ -2
-//                        _____
-//                          12
-//
-//            0.01 / 12          (((2 * (2 + 3)) ^ - 2)/ (2 * 2 * 3)) * 2
-//            0.14        ((2 * 3 * 2) + 2) * ((2 * (2 + 3)) ^ - (2))
-/////
-/////       3 + (   ((2 * 3 * 2) + 2) * ((2 * (2 + 3)) ^ - (2))      +        ((((2 * (2 + 3)) ^ - 2)/ (2 * 2 * 3)) * 2)          )
-/////
-/////
-////
-//        F(A) =  A + ((((A - 1) * A * (A - 1)) + (A - 1)) * (((A - 1) * ((A - 1) + A)) ^ - ((A - 1)))      +        (((((A - 1) * ((A - 1) + A)) ^ - (A - 1))/ ((A - 1) * (A - 1) * A)) * (A - 1)))
-//
-//
-// Explicação:
-// 1. A função `approximateAndFindNthPrime` agora retorna uma média das aproximações básica e refinada para maior precisão.
-// 2. Reduzimos as chamadas desnecessárias às funções de aproximação.
-// 3. A variável `ko` calcula a diferença de forma eficiente, e `numeroAproximado` aplica o ajuste para obter um número mais preciso.
-
-
-/*
-
-como fazer para saber se um numero X, dividido por 12, é igual à 12 vezes numero n mais um número primo?
-
-por exemplo, o número 541
-dividido por 12 dá
-aproximadamente 45,083333333
-
-se dividirmos a parte inteira da parte decimal, fica
-parte Inteira 
-45
-
-parte decimal
-0,08333333...
-
-se você multiplicar 45 x 12
-vai dar 540
-
-e se você multiplicar 0,0833333... x 12
-vai dar igual à 1
-
-quer dizer que 
-541 = (45 x 12) + 1
-
-aí que está a questão, se a parte decimal
-multiplicada por 12 for igual à um número primo
-menor ou igual à 11
-
-então a função deve retornar true
-caso contrário false
-
-*/
