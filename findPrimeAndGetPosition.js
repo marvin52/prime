@@ -10,8 +10,8 @@ function retornaPrimoUsandoFuncDePerimetroPrime(value) {
 
 
 function pegaPosicao(value, num) {
-    const perimeterBase = parseInt(42) + (num + num);
-    const diameterBase = parseInt(13);
+    const perimeterBase = parseInt(59) + (num + num);
+    const diameterBase = parseInt(17);
     return Math.floor(((value * diameterBase) / perimeterBase))
 }
 
